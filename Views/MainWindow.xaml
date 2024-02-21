@@ -1,0 +1,73 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Center" Height="414" VerticalAlignment="Center" Width="780" Grid.Row="1" >
+            <TabItem Header="Текущее задание">
+                <Grid Background="White">
+                    <Button Width="130" VerticalAlignment="Top" RenderTransformOrigin="0.538,0.501" Margin="10,201,0,0" Height="35" 
+                    HorizontalAlignment="Left" Content="Импортировать коды" Click="ShowFileDialog_OnClick"/>
+                    <TextBlock HorizontalAlignment="Center" Height="25" Margin="0,10,0,0" TextWrapping="Wrap" Text="Задание на раскладку" VerticalAlignment="Top" Width="195" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock TextWrapping="Wrap" Text="GTIN:" Margin="10,67,699,300" FontWeight="Bold" />
+                    <TextBlock Name="textproduct" TextWrapping="Wrap" Text="" Margin="80,41,398,324"/>
+                    <TextBlock Name="textgtin" TextWrapping="Wrap" Text="" Margin="80,67,398,282" />
+                    <TextBlock TextWrapping="Wrap" Text="Объем бутылки:" Margin="10,109,657,251" FontWeight="Bold" />
+                    <TextBlock TextWrapping="Wrap" Text="Формат короба:" Margin="10,136,657,229" FontWeight="Bold" />
+                    <TextBlock TextWrapping="Wrap" Text="Формат паллет:" Margin="10,162,657,199" FontWeight="Bold" />
+                    <TextBlock Name="textvolume" TextWrapping="Wrap" Text="" Margin="122,109,483,255" />
+                    <TextBlock TextWrapping="Wrap" Text="Продукт:" Margin="10,41,699,319" FontWeight="Bold" />
+                    <TextBlock Name="textformatpallet" TextWrapping="Wrap" Text="" Margin="122,162,483,203" />
+                    <TextBlock Name="textformatbox" TextWrapping="Wrap" Text="" Margin="122,135,483,229"/>
+                    <Button Content="Получить миссию" 
+        HorizontalAlignment="Left" Margin="151,201,0,0" 
+        VerticalAlignment="Top" Height="35" Width="124"
+        Click="GetMission_OnClick"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Продукция" GotFocus="TabItem_GotFocus">
+                <Grid Background="White">
+                    <TextBlock HorizontalAlignment="Center" Height="25" Margin="0,10,0,0" TextWrapping="Wrap" Text="Единицы Продукции" VerticalAlignment="Top" Width="229" FontWeight="Bold" FontSize="18"/>
+                    <DataGrid Name="datagrid1" HorizontalAlignment="Center" Height="336" Margin="0,40,0,0" VerticalAlignment="Top" Width="754" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Код единицы продукции" Binding="{Binding Code}"/>
+                            <DataGridTextColumn Header="Id Короба" Binding="{Binding BoxId}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Короба" GotFocus="TabItem_GotFocus_2" >
+                <Grid Background="White">
+                    <TextBlock HorizontalAlignment="Center" Height="25" Margin="0,10,0,0" TextWrapping="Wrap" Text="Короба" VerticalAlignment="Top" Width="67" FontWeight="Bold" FontSize="18"/>
+                    <DataGrid Name="datagrid2" HorizontalAlignment="Center" Height="336" Margin="0,40,0,0" VerticalAlignment="Top" Width="754" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Код короба" Binding="{Binding Code}"/>
+                            <DataGridTextColumn Header="Id паллета" Binding="{Binding PalletId}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Паллеты" GotFocus="TabItem_GotFocus_1">
+                <Grid Background="White">
+                    <TextBlock HorizontalAlignment="Center" Height="25" Margin="0,10,0,0" TextWrapping="Wrap" Text="Паллеты" VerticalAlignment="Top" Width="79" FontWeight="Bold" FontSize="18"/>
+                    <DataGrid Name="datagrid3" HorizontalAlignment="Center" Height="179" Margin="0,40,0,0" VerticalAlignment="Top" Width="684" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Код паллета" Binding="{Binding Code}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Создать карту расскладки" 
+        HorizontalAlignment="Left" Margin="543,224,0,0" 
+        VerticalAlignment="Top" Height="27" Width="150"
+        Click="GetMap_OnClick" RenderTransformOrigin="0.538,0.501"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
